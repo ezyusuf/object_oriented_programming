@@ -5,13 +5,21 @@ class Rover
       @direction = direction
     end
 
+    def process_input(input)
+      values = input.split("")
+      values.each do |value|
+        read_instructions(value)
+      end
+    end
+    # inst.split("").each do |value|
+
     def read_instructions(value)
       if value == "L"
         turn_left
       elsif value == "R"
         turn_right
       elsif value == "M"
-        move_forward
+        move
       end
     end
 
@@ -59,11 +67,15 @@ end
 my_rover= Rover.new(2,2,"N")
 puts my_rover
 
-my_rover.read_instructions("MMRMMLMMLMMMMMMMMMM")
+my_rover.process_input("MMRMMLMMLMMMMMMMMMM")
 puts my_rover
 
-# my_rover.turn_right
-# puts turn_right
-# my_rover.turn_left
-# puts turn_left
+my_rover.move
+puts my_rover
+
+my_rover.turn_right
+puts my_rover
+
+my_rover.move
+puts my_rover
 
